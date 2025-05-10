@@ -4,18 +4,11 @@ const products = [
     {
         id: 1,
         name: "Classic Bag Organizer",
-        price: 29.99,
-        image: "product1.jpg",
-        description: "Perfect for everyday bags"
-    },
-    {
-        id: 2,
-        name: "Premium Organizer",
-        price: 39.99,
-        image: "product2.jpg",
-        description: "Luxury material, perfect fit"
-    },
-    // Add more products as needed
+        price: 159,
+        image: "ordnr.png",
+        description: "Transform chaos into order."
+    }
+    
 ];
 
 // Cart state
@@ -35,7 +28,7 @@ function displayProducts() {
             <img src="${product.image}" alt="${product.name}">
             <h3>${product.name}</h3>
             <p>${product.description}</p>
-            <p class="price">$${product.price.toFixed(2)}</p>
+            <p class="price">₱${product.price.toFixed(2)}</p>
             <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
                 Add to Cart
             </button>
@@ -91,7 +84,7 @@ function updateCartUI() {
             <img src="${item.image}" alt="${item.name}">
             <div class="cart-item-details">
                 <h4>${item.name}</h4>
-                <p>$${item.price.toFixed(2)}</p>
+                <p>₱${item.price.toFixed(2)}</p>
                 <div class="cart-item-quantity">
                     <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
                     <span>${item.quantity}</span>
@@ -107,7 +100,7 @@ function updateCartUI() {
 
     // Update cart total
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    cartTotal.textContent = `$${total.toFixed(2)}`;
+    cartTotal.textContent = `₱${total.toFixed(2)}`;
 }
 
 function checkout() {
@@ -116,13 +109,7 @@ function checkout() {
         return;
     }
 
-    // Here you would typically:
-    // 1. Validate the cart
-    // 2. Collect shipping information
-    // 3. Process payment
-    // 4. Send order to backend
-    // For this example, we'll just show an alert
-    alert('Thank you for your order! Total: $' + 
+    alert('Thank you for your order! Total: ₱' + 
           cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2));
     
     // Clear cart after successful checkout
